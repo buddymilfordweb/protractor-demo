@@ -1,0 +1,43 @@
+<form (ngSubmit)="onSubmit()" #authorizationForm="ngForm" [hidden]="submitted">
+  <h1 id="authorizationTitle">Create Reservation</h1>
+
+  <div>
+    <label for="lastName">
+      Last Name
+    </label>
+    <input id="lastName" type="text" [(ngModel)]="authorization.lastName" name="lastName" required/>
+  </div>
+
+  <div>
+    <label for="firstName">
+      First Name
+    </label>
+    <input id="firstName" type="text" [(ngModel)]="authorization.firstName" name="firstName" required/>
+  </div>
+
+  <div>
+    <label for="vehicleClass">
+      Vehicle Class
+    </label>
+    <select id="vehicleClass" [(ngModel)]="authorization.vehicleClass" name="vehicleClass" required>
+      <option value=""></option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!authorizationForm.form.valid">Create</button>
+</form>
+
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <h5>Last Name</h5>
+  <div>{{ authorization.lastName }}</div>
+  <h5>First Name</h5>
+  <div>{{ authorization.firstName }}</div>
+  <h5>Vehicle Class</h5>
+  <div>{{ authorization.vehicleClass }}</div>
+  <button (click)="submitted=false">Edit</button>
+</div>
